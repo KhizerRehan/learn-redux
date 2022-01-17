@@ -1,18 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-// Redux 
+// Redux
 
-import {
-  createStore
-} from 'redux'
+import { createStore } from "redux";
 
-const reducer = (state, action) => {
+// Initial State:
+
+const initialState = { counter: 0 };
+
+// Reducer
+
+const reducer = (state = initialState, action) => {
+  console.log("state", state);
+  console.log("action", action);
+
   return state;
-}
+};
 
 const store = createStore(reducer);
 console.log("Store", store);
@@ -21,7 +28,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
