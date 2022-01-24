@@ -17,20 +17,30 @@ const initialState = { counter: 0 };
 const INCREMENT = "counter/increment";
 const DECREMENT = "counter/decrement";
 
+// Action Creators:
+
+const incrementActionCreator = () => ({type: INCREMENT});
+const decrementActionCreator = () => ({type: DECREMENT});
+
 // Reducer
 
 const reducer = (state = initialState, action) => {
-  console.log("state", state);
   console.log("action", action);
 
-  if (action.App === INCREMENT) {
+  if (action.type === INCREMENT) {
     let { counter } = state;
     counter = counter + 1;
+    return {
+      counter
+    };
   }
 
-  if (action.App === DECREMENT) {
+  if (action.type === DECREMENT) {
     let { counter } = state;
     counter = counter - 1;
+    return {
+      counter
+    };
   }
 
   return state;
@@ -38,6 +48,27 @@ const reducer = (state = initialState, action) => {
 
 const store = createStore(reducer);
 console.log("Store", store);
+
+// Call Increment after 1s
+setTimeout(()=> {
+  console.log("***********  increment creator invoked ********")
+ store.dispatch(incrementActionCreator());
+ store.dispatch(incrementActionCreator());
+ store.dispatch(incrementActionCreator());
+ store.dispatch(incrementActionCreator());
+ store.dispatch(incrementActionCreator());
+ console.log("Increment-5x");
+ console.log("State", store.getState());
+}, 2000)
+
+// Call Increment after 1s
+setTimeout(()=> {
+  console.log("***********  decrement creator invoked ********")
+  store.dispatch(decrementActionCreator());
+  store.dispatch(decrementActionCreator());
+  console.log("Decrement-2x");
+  console.log("State", store.getState());
+ }, 5000)
 
 ReactDOM.render(
   <React.StrictMode>
