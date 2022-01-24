@@ -49,6 +49,10 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer);
 console.log("Store", store);
 
+const subscriber = () => console.log('Subscriber', store.getState());
+store.subscribe(subscriber);
+store.dispatch(incrementActionCreator());
+
 // Call Increment after 1s
 setTimeout(()=> {
   console.log("***********  increment creator invoked ********")
