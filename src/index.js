@@ -7,7 +7,11 @@ import reportWebVitals from "./reportWebVitals";
 // Redux
 import { createStore } from "redux";
 
-import { reducer } from "./basic-store";
+// Basic reducer
+// import { reducer } from "./basic-store";
+
+// Multiple reducers
+import { reducer } from "./combine-reducers";
 
 // ********************************************
 //  Demo Basic Redux Store:
@@ -17,13 +21,28 @@ import { reducer } from "./basic-store";
  you to learn code and how it is working + see code COMMIT BY COMMIT which is pushed on github.
  */
 
-const basicReduxStoreReducer = reducer;
+
+//  Comment
+// const basicReduxStoreReducer = reducer;
 
 // ********************************************
 
+
+
+// ********************************************
+//  Demo Combine Redux Store:
+/*
+ Note: Usr combine redux store 
+ */
+
+ const combineReducersReduxStoreReducer = reducer;
+
+ // ********************************************
+
+
 // Explicitly "export" store to import in other pieces of application to learn code seperatly:
 // -> https://stackoverflow.com/a/41172768/6618218
-export const store = createStore(basicReduxStoreReducer);
+export const store = createStore(combineReducersReduxStoreReducer);
 console.log("Store", store);
 
 
